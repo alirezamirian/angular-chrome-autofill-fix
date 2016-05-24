@@ -1,7 +1,7 @@
 {
   "name": "angular-chrome-autofill-fix",
   "main": "angular-chrome-autofill-fix.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/alirezamirian/angular-chrome-autofill-fix",
   "authors": [
     "Alireza Mirian <alireza.mirian@gmail.com>"
