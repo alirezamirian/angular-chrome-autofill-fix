@@ -11,16 +11,16 @@
 
     /**
      * @ngdoc module
-     * @name angular-chrome-autofill-fix
-     * @module angular-chrome-autofill-fix
+     * @name chrome-autofill-fix
+     * @module chrome-autofill-fix
      * @description
      * A tiny fix for chrome problems regarding auto-filled passwords
      *
      */
-    angular.module("angular-chrome-autofill-fix", [])
+    angular.module("chrome-autofill-fix", [])
         /**
          * @ngdoc directive
-         * @module angular-chrome-autofill-fix
+         * @module chrome-autofill-fix
          * @name mdInputContainer
          * Prevents floating label collapsing in [angular-material](https://material.angularjs.org/latest/demo/input) inputs
          *
@@ -28,7 +28,7 @@
         .directive('mdInputContainer', mdInputContainerDirective)
         /**
          * @ngdoc directive
-         * @module angular-chrome-autofill-fix
+         * @module chrome-autofill-fix
          * @name required
          * Overrides the default `required` validator to take Chrome auto-filling into account
          */
