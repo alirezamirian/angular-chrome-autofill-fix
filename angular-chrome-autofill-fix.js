@@ -1,0 +1,101 @@
+/**
+ * Created by Alireza Mirian (alireza.mirian@gmail.com) on 05/24/2016.
+ */
+
+
+(function(angular){
+    "use strict";
+
+    var MAX_TRIES = 5;
+    var TRY_INTERVAL = 100;
+
+    /**
+     * @ngdoc module
+     * @name angular-chrome-autofill-fix
+     * @module angular-chrome-autofill-fix
+     * @description
+     * A tiny fix for chrome problems regarding auto-filled passwords
+     *
+     */
+    angular.module("angular-chrome-autofill-fix", [])
+        /**
+         * @ngdoc directive
+         * @module angular-chrome-autofill-fix
+         * @name mdInputContainer
+         * Prevents floating label collapsing in [angular-material](https://material.angularjs.org/latest/demo/input) inputs
+         *
+         */
+        .directive('mdInputContainer', mdInputContainerDirective)
+        /**
+         * @ngdoc directive
+         * @module angular-chrome-autofill-fix
+         * @name required
+         * Overrides the default `required` validator to take Chrome auto-filling into account
+         */
+        .directive("required", requiredDirective);
+
+    function requiredDirective($interval, $log) {
+        return {
+            priority: 100,
+            require: "?ngModel",
+            link: linkFn
+        };
+        function linkFn(scope, elem, attrs, ngModel) {
+            if(!ngModel){
+                // no ngModel, nothing to do!
+                return;
+            }
+            var originalValidator = ngModel.$validators.required;
+            ngModel.$validators.required = validator;
+
+            // try validating until
+            var tries = 0;
+            var timer = $interval(function () {
+                tries++;
+                if (tries > MAX_TRIES) {
+                    $interval.cancel(timer);
+                }
+                ngModel.$validate();
+            }, TRY_INTERVAL);
+
+            function validator(modelValue, viewValue) {
+
+                if (isChrome() && elem.is("input[type=password]:-webkit-autofill")) {
+                    $log.info("bypassing required validator because of Chrome auto-filling");
+                    $interval.cancel(timer);
+                    return true;
+                }
+                return originalValidator(modelValue, viewValue);
+            }
+        }
+    }
+
+    function mdInputContainerDirective($interval) {
+        return {
+            restrict: "E",
+            link: linkFn
+        };
+        function linkFn($scope, elem) {
+            if (isChrome()) {
+                var tries = 0;
+                var timer = $interval(function () {
+                    tries++;
+                    if (tries > MAX_TRIES) {
+                        $interval.cancel(timer);
+                    }
+                    if (elem[0].querySelector('input[type=password]:-webkit-autofill')) {
+                        elem.addClass('md-input-has-value');
+                        $interval.cancel(timer);
+                    }
+                }, TRY_INTERVAL);
+            }
+        }
+    }
+
+
+    function isChrome(){
+        return navigator.userAgent.match(/chrome/i) && !navigator.userAgent.match(/edge/i);
+    }
+
+
+})(angular);

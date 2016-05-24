@@ -1,0 +1,23 @@
+{
+  "name": "angular-chrome-autofill-fix",
+  "main": "angular-chrome-autofill-fix.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/alirezamirian/angular-chrome-autofill-fix",
+  "authors": [
+    "Alireza Mirian <alireza.mirian@gmail.com>"
+  ],
+  "description": "A tiny fix for chrome problems regarding auto-filled passwords",
+  "keywords": [
+    "angular",
+    "chrome",
+    "autofill"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
