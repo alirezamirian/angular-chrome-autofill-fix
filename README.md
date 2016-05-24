@@ -7,6 +7,11 @@ This includes a fix for [angular-material inputs](https://material.angularjs.org
 ```
 bower install angular-chrome-autofill-fix --save
 ```
+## Usage
+just add dependency to `angular-chrome-autofill-fix`:
+```
+angular.module('yourApp', ['angular-chrome-autofill-fix']);
+```
 
 ## Problem example
 In the following form, there is an `ng-disabled` directive on the login button in order to disable it when the form is invalid. As you see the form is auto-filled and so it should be valid but it's not. `angular-chrome-autofill-fix` fix this by overriding `required` validator in a way that reports valid state when the password field is autofilled by chrome.
