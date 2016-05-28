@@ -8,9 +8,9 @@ This includes a fix for [angular-material inputs](https://material.angularjs.org
 bower install angular-chrome-autofill-fix --save
 ```
 ## Usage
-just add dependency to `angular-chrome-autofill-fix`:
+just add dependency chrome-autofill-fix`:
 ```
-angular.module('yourApp', ['angular-chrome-autofill-fix']);
+angular.module('yourApp', ['chrome-autofill-fix']);
 ```
 
 ## Problem example
