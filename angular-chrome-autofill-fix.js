@@ -60,7 +60,7 @@
 
             function validator(modelValue, viewValue) {
 
-                if (isChrome() && elem.is("input[type=password]:-webkit-autofill")) {
+                if (isChrome() && elem[0].matches("input[type=password]:-webkit-autofill")) {
                     $log.info("bypassing required validator because of Chrome auto-filling");
                     $interval.cancel(timer);
                     return true;
@@ -96,6 +96,22 @@
     function isChrome(){
         return navigator.userAgent.match(/chrome/i) && !navigator.userAgent.match(/edge/i);
     }
+    
+    /**
+     * element.matches() pollyfill
+     */
+    Element && function(ElementPrototype) {
+        ElementPrototype.matches = ElementPrototype.matchesSelector ||
+            ElementPrototype.mozMatchesSelector ||
+            ElementPrototype.msMatchesSelector ||
+            ElementPrototype.oMatchesSelector ||
+            ElementPrototype.webkitMatchesSelector ||
+            function (selector) {
+                var node = this, nodes = (node.parentNode || node.document).querySelectorAll(selector), i = -1;
 
+                while (nodes[++i] && nodes[i] != node);
 
+                return !!nodes[i];
+            }
+    }(Element.prototype);
 })(angular);
