@@ -1,7 +1,7 @@
 # angular-chrome-autofill-fix
 A tiny fix for chrome problems regarding auto-filled passwords.
 This includes a fix for [angular-material inputs](https://material.angularjs.org/latest/demo/input) to prevent label collapse 
-(until a the fix get pulled into repo), and another fix which overrides the default `required` validator to take Chrome auto-filling into account.
+(until a fix get pulled into repo), and another fix which overrides the default `required` validator to take Chrome auto-filling into account.
 
 ## Install
 ```
