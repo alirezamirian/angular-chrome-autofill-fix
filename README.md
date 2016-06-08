@@ -19,4 +19,5 @@ In the following form, there is an `ng-disabled` directive on the login button i
 
 ![chrome-autofill](https://cloud.githubusercontent.com/assets/3150694/15499432/77a0241a-21b9-11e6-86c1-961d2626028f.PNG)
 
-
+# Known issues
+- It's kind of strange but seemingly it doesn't work on Chrome for Ubuntu! [See the issue](https://github.com/alirezamirian/angular-chrome-autofill-fix/issues/3) 
