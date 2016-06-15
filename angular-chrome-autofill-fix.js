@@ -25,14 +25,14 @@
          * Prevents floating label collapsing in [angular-material](https://material.angularjs.org/latest/demo/input) inputs
          *
          */
-        .directive('mdInputContainer', mdInputContainerDirective)
+        .directive('mdInputContainer', ['$interval', mdInputContainerDirective])
         /**
          * @ngdoc directive
          * @module chrome-autofill-fix
          * @name required
          * Overrides the default `required` validator to take Chrome auto-filling into account
          */
-        .directive("required", requiredDirective);
+        .directive("required", ['$interval', '$log', requiredDirective]);
 
     function requiredDirective($interval, $log) {
         return {
