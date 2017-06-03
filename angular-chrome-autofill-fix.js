@@ -41,8 +41,16 @@
             link: linkFn
         };
         function linkFn(scope, elem, attrs, ngModel) {
+            if(!isChrome()){
+                // ignore other browsers
+                return;
+            }
             if(!ngModel){
                 // no ngModel, nothing to do!
+                return;
+            }
+            if(elem[0].tagName !== 'INPUT'){
+                // ignore non-input components
                 return;
             }
             var originalValidator = ngModel.$validators.required;
@@ -76,7 +84,7 @@
             link: linkFn
         };
         function linkFn($scope, elem) {
-            if (isChrome()) {
+            if (isChrome() && elem[0].querySelector('input')) {
                 var tries = 0;
                 var timer = $interval(function () {
                     tries++;
