@@ -1,0 +1,24 @@
+{
+  "name": "angular-chrome-autofill-fix",
+  "version": "0.0.4",
+  "description": "A tiny fix for chrome problems regarding auto-filled passwords",
+  "main": "angular-chrome-autofill-fix.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devotis/angular-chrome-autofill-fix.git"
+  },
+  "keywords": [
+    "angular",
+    "chrome",
+    "autofill"
+  ],
+  "author": "Alireza Mirian <alireza.mirian@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devotis/angular-chrome-autofill-fix/issues"
+  },
+  "homepage": "https://github.com/devotis/angular-chrome-autofill-fix#readme"
+}
